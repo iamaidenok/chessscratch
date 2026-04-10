@@ -28,22 +28,12 @@ def prompt_user():
         if indicator == i:
             column = i
             break   
-    if pick_piece[1] == '1':
-        row = 7
-    elif pick_piece[1] == '2':
-        row = 6
-    elif pick_piece[1] == '3':
-        row = 5
-    elif pick_piece[1] == '4':
-        row = 4
-    elif pick_piece[1] == '5':
-        row = 3
-    elif pick_piece[1] == '6':
-        row = 2
-    elif pick_piece[1] == '7':
-        row = 1
-    elif pick_piece[1] == '8':
-        row = 0
+    for i in range(8):
+        row_options = [7,6,5,4,3,2,1,0]
+        indicator = ord(pick_piece[1])-49
+        if indicator == i:
+            row = row_options[i]
+            break
     new_square = input("Pick a square to move the piece\n")
     new_square = list(new_square)
     for i in range(8):
@@ -51,22 +41,12 @@ def prompt_user():
         if indicator == i:
             new_column = i
             break
-    if new_square[1] == '1':
-        new_row = 7
-    elif new_square[1] == '2':
-        new_row = 6
-    elif new_square[1] == '3':
-        new_row = 5
-    elif new_square[1] == '4':
-        new_row = 4
-    elif new_square[1] == '5':
-        new_row = 3
-    elif new_square[1] == '6':
-        new_row = 2
-    elif new_square[1] == '7':
-        new_row = 1
-    elif new_square[1] == '8':
-        new_row = 0
+    for i in range(8):
+        row_options = [7,6,5,4,3,2,1,0]
+        indicator = ord(new_square[1])-49
+        if indicator == i:
+            new_row = row_options[i]
+            break
 #if board[row][column] == '00':
 def moving_pieces():
     global chosen_piece
