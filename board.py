@@ -99,5 +99,6 @@ def moving_pieces():
 
 board = np.array([['BR', 'BN', 'BB', 'BQ', 'BK', 'BB', 'BN', 'BR'], ['BP', 'BP', 'BP', 'BP','BP', 'BP', 'BP', 'BP'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['WP', 'WP', 'WP', 'WP','WP', 'WP', 'WP', 'WP'], ['WR', 'WN', 'WB', 'WQ', 'WK', 'WB', 'WN', 'WR']], dtype = object)
 print(board)
-prompt_user()
-moving_pieces()
+while True:
+    prompt_user()
+    moving_pieces()
