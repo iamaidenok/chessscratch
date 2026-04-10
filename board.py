@@ -23,22 +23,11 @@ def prompt_user():
     global new_column
     pick_piece = input("Pick a piece to move by inputting the square it's on\n")
     pick_piece = list(pick_piece)
-    if pick_piece[0] == 'a':
-        column = 0
-    elif pick_piece[0] == 'b':
-        column = 1
-    elif pick_piece[0] == 'c':
-        column = 2
-    elif pick_piece[0] == 'd':
-        column = 3
-    elif pick_piece[0] == 'e':
-        column = 4
-    elif pick_piece[0] == 'f':
-        column = 5
-    elif pick_piece[0] == 'g':
-        column = 6
-    elif pick_piece[0] == 'h':
-        column = 7   
+    for i in range(8):
+        indicator = ord(pick_piece[0])-97
+        if indicator == i:
+            column = i
+            break   
     if pick_piece[1] == '1':
         row = 7
     elif pick_piece[1] == '2':
@@ -57,22 +46,11 @@ def prompt_user():
         row = 0
     new_square = input("Pick a square to move the piece\n")
     new_square = list(new_square)
-    if new_square[0] == 'a':
-        new_column = 0
-    elif new_square[0] == 'b':
-        new_column = 1
-    elif new_square[0] == 'c':
-        new_column = 2
-    elif new_square[0] == 'd':
-        new_column = 3
-    elif new_square[0] == 'e':
-        new_column = 4
-    elif new_square[0] == 'f':
-        new_column = 5
-    elif new_square[0] == 'g':
-        new_column = 6
-    elif new_square[0] == 'h':
-        new_column = 7   
+    for i in range(8):
+        indicator = ord(new_square[0])-97
+        if indicator == i:
+            new_column = i
+            break
     if new_square[1] == '1':
         new_row = 7
     elif new_square[1] == '2':
