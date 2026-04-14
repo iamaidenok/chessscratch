@@ -10,9 +10,9 @@ def determine_turn():
     global player
     turn+=1
     if turn%2 != 0:
-        player = 2
+        player = 'W'
     else:
-        player = 1
+        player = 'B'
 
 def prompt_user():
     global row
@@ -47,10 +47,31 @@ def prompt_user():
         if indicator == i:
             new_row = row_options[i]
             break
-#if board[row][column] == '00':
+
 def moving_pieces():
     global chosen_piece
     chosen_piece = board[row][column]
+    chosenpiece = list(chosen_piece)
+    if chosenpiece[0] != player:
+        while True: #code that makes user pick their own piece
+            print("Pick one of YOUR pieces")
+            prompt_user()
+            chosen_piece = board[row][column]
+            chosenpiece = list(chosen_piece)
+            if chosenpiece[0] == player:
+                break
+    if chosenpiece[1] == 'P':
+        #function for pawns
+    elif chosenpiece[1] == 'R':
+        #function for rooks
+    elif chosenpiece[1] == 'N':
+        #function for knights
+    elif chosenpiece[1] == 'B':
+        #function for bishops
+    elif chosenpiece[1] == 'Q':
+        #function for queens(just mash bishop and rook)
+    elif chosenpiece[1] == 'K':
+        #function for king(include not being able to move into check and checkmate)
     board[row][column] = '00'
     board[new_row][new_column] = chosen_piece
     print(board)
@@ -58,5 +79,6 @@ def moving_pieces():
 board = np.array([['BR', 'BN', 'BB', 'BQ', 'BK', 'BB', 'BN', 'BR'], ['BP', 'BP', 'BP', 'BP','BP', 'BP', 'BP', 'BP'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['WP', 'WP', 'WP', 'WP','WP', 'WP', 'WP', 'WP'], ['WR', 'WN', 'WB', 'WQ', 'WK', 'WB', 'WN', 'WR']], dtype = object)
 print(board)
 while True:
+    determine_turn()
     prompt_user()
     moving_pieces()
