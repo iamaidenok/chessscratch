@@ -61,19 +61,41 @@ def moving_pieces():
             if chosenpiece[0] == player:
                 break
     if chosenpiece[1] == 'P':
-        #function for pawns
-    elif chosenpiece[1] == 'R':
+        pawn()
+    #elif chosenpiece[1] == 'R':
         #function for rooks
-    elif chosenpiece[1] == 'N':
+    #elif chosenpiece[1] == 'N':
         #function for knights
-    elif chosenpiece[1] == 'B':
+    #elif chosenpiece[1] == 'B':
         #function for bishops
-    elif chosenpiece[1] == 'Q':
+    #elif chosenpiece[1] == 'Q':
         #function for queens(just mash bishop and rook)
-    elif chosenpiece[1] == 'K':
+    #elif chosenpiece[1] == 'K':
         #function for king(include not being able to move into check and checkmate)
-    board[row][column] = '00'
-    board[new_row][new_column] = chosen_piece
+    #board[row][column] = '00'
+    #board[new_row-1][new_column] = chosen_piece
+    #print(board)
+def pawn():
+    while True:
+        if player == 'W':
+            while True:
+                if board[new_row][new_column] != board[row-1][column]:
+                    print("Pick a legal move")
+                    prompt_user()
+                else:
+                    board[row][column] = '00'
+                    board[new_row][new_column] = chosen_piece
+                    break
+        if player == 'B':
+            while True:
+                if board[new_row][new_column] != board[row+1][column]:
+                    print("Pick a legal move")
+                    prompt_user()                  
+                else: 
+                    board[row][column] = '00'
+                    board[new_row][new_column] = chosen_piece                   
+                    break
+        break
     print(board)
 
 board = np.array([['BR', 'BN', 'BB', 'BQ', 'BK', 'BB', 'BN', 'BR'], ['BP', 'BP', 'BP', 'BP','BP', 'BP', 'BP', 'BP'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['WP', 'WP', 'WP', 'WP','WP', 'WP', 'WP', 'WP'], ['WR', 'WN', 'WB', 'WQ', 'WK', 'WB', 'WN', 'WR']], dtype = object)
