@@ -79,7 +79,7 @@ def pawn():
     while True:
         if player == 'W':
             while True:
-                if board[new_row][new_column] != board[row-1][column]:
+                if new_row != row-1:
                     print("Pick a legal move")
                     prompt_user()
                 else:
@@ -88,7 +88,7 @@ def pawn():
                     break
         if player == 'B':
             while True:
-                if board[new_row][new_column] != board[row+1][column]:
+                if new_row != row+1:
                     print("Pick a legal move")
                     prompt_user()                  
                 else: 
