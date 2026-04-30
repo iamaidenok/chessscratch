@@ -78,24 +78,23 @@ def moving_pieces():
 def pawn():
     while True:
         if player == 'W':
-            while True:
-                if new_row != row-1:
-                    print("Pick a legal move")
-                    prompt_user()
-                else:
-                    board[row][column] = '00'
-                    board[new_row][new_column] = chosen_piece
-                    break
+            if new_row == row-1 and new_column == column:
+                break
+            elif row == 6 and new_row == row-2 and new_column == column:
+                break
+            else:
+                print("Pick a legal move")
+                prompt_user()
         if player == 'B':
-            while True:
-                if new_row != row+1:
-                    print("Pick a legal move")
-                    prompt_user()                  
-                else: 
-                    board[row][column] = '00'
-                    board[new_row][new_column] = chosen_piece                   
-                    break
-        break
+            if new_row == row+1 and new_column == column:
+                break            
+            elif row == 1 and new_row == row+2 and new_column == column: 
+                break
+            else:              
+                print("Pick a legal move")
+                prompt_user()
+    board[row][column] = '00'
+    board[new_row][new_column] = chosen_piece
     print(board)
 
 board = np.array([['BR', 'BN', 'BB', 'BQ', 'BK', 'BB', 'BN', 'BR'], ['BP', 'BP', 'BP', 'BP','BP', 'BP', 'BP', 'BP'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['00','00','00','00','00','00','00','00'], ['WP', 'WP', 'WP', 'WP','WP', 'WP', 'WP', 'WP'], ['WR', 'WN', 'WB', 'WQ', 'WK', 'WB', 'WN', 'WR']], dtype = object)
