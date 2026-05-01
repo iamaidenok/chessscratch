@@ -12,4 +12,19 @@ class Board:
             ['WP','WP','WP','WP','WP','WP','WP','WP'], 
             ['WR','WN','WB','WQ','WK','WB','WN','WR']
             ], dtype = object)
-        
+    def move_piece(self, start_row, start_column, end_row, end_column):
+        piece = self.grid[start_row][start_column]
+        self.grid[start_row][start_column] = '00'
+        self.grid[end_row][end_column] = piece
+        board.print_board()
+
+    def get_piece(self, row, column):
+        return self.grid[row][column]
+
+    def print_board(self):
+        print(self.grid)    
+
+#later add way to just add a square like a7 or smth instead of row column
+board = Board()
+print(board.get_piece(1,0))
+board.move_piece(1, 0, 2, 0)
