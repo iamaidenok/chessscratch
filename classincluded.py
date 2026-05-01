@@ -16,13 +16,10 @@ class Board:
         piece = self.grid[start_row][start_column]
         self.grid[start_row][start_column] = '00'
         self.grid[end_row][end_column] = piece
-        board.print_board()
+        print(self.grid)
 
     def get_piece(self, row, column):
-        return self.grid[row][column]
-
-    def print_board(self):
-        print(self.grid)    
+        return self.grid[row][column]  
 
 #later add way to just add a square like a7 or smth instead of row column
 board = Board()
