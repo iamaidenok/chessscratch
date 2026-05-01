@@ -12,36 +12,45 @@ class Board:
             ['WP','WP','WP','WP','WP','WP','WP','WP'], 
             ['WR','WN','WB','WQ','WK','WB','WN','WR']
             ], dtype = object)
-    def move_piece(self, start_row, start_column, end_row, end_column):
-        r1, c1 = self.translating_grid(start_row, start_column)
-        r2, c2 = self.translating_grid(end_row, end_column)
+    def move_piece(self, start, end):
+        r1, c1 = self.translating_grid(start)
+        r2, c2 = self.translating_grid(end)
         piece = self.grid[r1][c1]
         self.grid[r1][c1] = '00'
         self.grid[r2][c2] = piece
         self.print_board()
 
-    def get_piece(self, row, column):
-        r, c = self.translating_grid(row, column)
+    def get_piece(self, square):
+        r, c = self.translating_grid(square)
         return self.grid[r][c]
 
     def print_board(self):
         print(self.grid)
 
-    def translating_grid(self,column, row):
+    '''def translating_grid(self,column, row):
         column = ord(column)-97
         row_options = [7,6,5,4,3,2,1,0]
         rows = [1,2,3,4,5,6,7,8]
         index = rows.index(row)
         row = row_options[index]
+        return row, column'''
+
+    def translating_grid(self,square):
+        square = list(square)
+        column = ord(square[0])-97
+        row_options = [7,6,5,4,3,2,1,0]
+        rows = [1,2,3,4,5,6,7,8]
+        index = rows.index(int(square[1]))
+        row = row_options[index]
         return row, column
 
 #later add way to just add a square like a7 or smth instead of row column
 board = Board()
-print(board.translating_grid('a',7))
+print(board.translating_grid('a7'))
 
 
-print(board.get_piece('b',7))
-board.move_piece('a', 7, 'a', 6)
+print(board.get_piece('b7'))
+board.move_piece('a7', 'a6')
 class Pawn: #en passant might lowk fuck my crack
     def __init__(self, color):
         self.color = color
