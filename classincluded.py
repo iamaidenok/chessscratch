@@ -43,7 +43,12 @@ class Board:
         index = rows.index(int(square[1]))
         row = row_options[index]
         return row, column
-#lowk might need function to change square back into row column format
+    
+    def opp_translating_grid(self, row, column):
+        rows = chr(column + 97)
+        column = 8 - row
+        return rows + str(column)
+    #lowk might need function to change square back into row column format
 board = Board()
 '''print(board.translating_grid('a7'))
 
@@ -66,7 +71,13 @@ class Pawn: #en passant might lowk fuck my crack
                 legal_moves.append((row+1,column))
             if row == 1 and board.grid[row+1][column] == '00' and board.grid[row+2][column] == '00':
                 legal_moves.append((row+2,column))
-        return legal_moves
-pawn = Pawn('W')
-moves = pawn.move_collector(board,'a2')
+        legal_moves_translated = []
+        for i in legal_moves:
+            row = i[0]
+            column = i[1]
+            square = board.opp_translating_grid(row,column)
+            legal_moves_translated.append(square)
+        return legal_moves_translated
+pawn = Pawn('B')
+moves = pawn.move_collector(board,'a7')
 print(moves)
