@@ -43,30 +43,30 @@ class Board:
         index = rows.index(int(square[1]))
         row = row_options[index]
         return row, column
-
-#later add way to just add a square like a7 or smth instead of row column
+#lowk might need function to change square back into row column format
 board = Board()
-print(board.translating_grid('a7'))
+'''print(board.translating_grid('a7'))
 
 
 print(board.get_piece('b7'))
-board.move_piece('a7', 'a6')
+board.move_piece('a7', 'a6')'''
 class Pawn: #en passant might lowk fuck my crack
     def __init__(self, color):
         self.color = color
-    def move_collector(self, board, row, column):
+    def move_collector(self, board, square):
+        row, column = board.translating_grid(square)
         legal_moves = []
         if self.color == 'W':
-            if board[row-1][column] == '00':
+            if board.grid[row-1][column] == '00':
                 legal_moves.append((row-1,column))
-            if row == 6 and board[row-1][column] == '00' and board[row-2][column] == '00':
+            if row == 6 and board.grid[row-1][column] == '00' and board.grid[row-2][column] == '00':
                 legal_moves.append((row-2,column))
         else:
-            if board[row+1][column] == '00':
+            if board.grid[row+1][column] == '00':
                 legal_moves.append((row+1,column))
-            if row == 1 and board[row+1][column] == '00' and board[row+2][column] == '00':
+            if row == 1 and board.grid[row+1][column] == '00' and board.grid[row+2][column] == '00':
                 legal_moves.append((row+2,column))
         return legal_moves
-'''pawn = Pawn('W')
-moves = pawn.move_collector(board.grid,1,0)
-print(moves)'''
+pawn = Pawn('W')
+moves = pawn.move_collector(board,'a2')
+print(moves)
