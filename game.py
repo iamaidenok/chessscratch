@@ -16,7 +16,6 @@ class Game:
     def ask_player_for_moves(self):
         self.board.print_board()
         start = input("Pick a piece: \n")
-        end = input("Where you moving it? \n")
         piece = self.board.get_piece(start)
         
         if piece[0] != self.turn:
@@ -27,6 +26,8 @@ class Game:
         if piece[1] == "P":
             pawn = Pawn(self.turn)
             legal_moves = pawn.move_collector(self.board,start)
+            print("Your legal moves are: ", legal_moves)
+            end = input("Where you moving it? \n")
             if end in legal_moves:
                 self.board.move_piece(start,end)
                 self.determine_turn()
